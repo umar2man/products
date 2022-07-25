@@ -4,29 +4,38 @@
 }
 
 .app {
-	width: 1200px;
+	max-width: 1200px;
 	margin: auto;
+	font-size: 20px;
 }
 
 header {
-	height: 80px;
+	/* height: 80px; */
 	align-items: center;
 	display: flex;
 	justify-content: space-around;
 }
 
-.logo img {
-	width: 80px;
+.logo {
+	width: 6%;
 }
 
-.searchBlock {
-	width: 520px;
+.logo img {
+	width: 100%;
+}
+
+.search-block {
+	width: 44%;
 	display: flex;
-	justify-content: space-around;
+	justify-content: space-between;
+}
+
+.input-block {
+	width: 58%;
 }
 
 input {
-	width: 300px;
+	width: 100%;
 	height: 45px;
 	font-size: 23px;
 	padding: 10px;
@@ -35,75 +44,100 @@ input {
 	border-radius: 5px;
 }
 
-.searchButton {
-	width: 180px;
+.search-button {
+	width: 35%;
 	height: 45px;
-	font-size: 20px;
 	border: 1.5px solid gray;
 	border-radius: 5px;
+	font-size: 20px;
 }
 
 .total {
-	width: 420px;
-	font-size: 20px;
+	width: 35%;
 }
 
-.cardList {
+.card-list {
 	display: flex;
 	justify-content: space-around;
 	flex-wrap: wrap;
 	margin-top: 40px;
 }
 
-.cardBlock {
-	width: 260px;
-	padding: 25px;
-	border: 2px solid rgb(0, 135, 228);
-	border-radius: 5px;
+.card-block {
+	width: 22%;
+	margin: 1% 0;
+	padding: 2%;
+	border: 1px solid rgb(0, 135, 228);
+	border-radius: 10px;
+	cursor: pointer;
+	position: relative;
 }
 
-.selectedCard {
-	background-color: rgb(153, 232, 199);
+.selected-card {
+	background-color: rgb(202, 230, 247);
 }
 
-.cardImg img {
-	width: 200px;
-}
-
-.cardImg {
+.card-img {
+	width: 100%;
 	text-align: center;
 }
 
-.cardTitle {
-	font-size: 20px;
+.card-img img {
+	width: 100%;
+}
+
+.card-title {
+	font-weight: 700;
 	text-align: center;
 }
 
-.cardInfo {
-	margin: 10px 0;
+.card-info {
+	margin: 0 0 10px 0;
 	display: flex;
 	justify-content: space-between;
 }
 
-.cardPrice {
-	/* display: inline-block; */
-}
-
-.cardLeft {
-	/* display: inline-block; */
-}
-
-.amountBlock {
+.amount-block {
 	display: flex;
 	justify-content: space-between;
 }
 
-.amountBlock button {
+.amount {
+	line-height: 30px;
+	font-size: 24px;
+	font-weight: 700;
+}
+
+.amount-block button {
 	width: 30px;
 	height: 30px;
-	border-radius: 10px;
-	border: none;
+	border: 1px solid rgb(0, 135, 228);
+	border-radius: 5px;
 	outline: none;
 	cursor: pointer;
-	background-color: rgb(0, 135, 228);
+	background-color: rgb(255, 255, 255);
+	color: rgb(0, 135, 228);
+}
+
+.amount-block button:disabled {
+	background-color: rgb(197, 197, 197);
+	border: none;
+	cursor: default;
+	color: white;
+}
+
+.view-details {
+	color: rgb(181, 181, 181);
+	position: absolute;
+	top: 2px;
+	right: 5px;
+	font-size: 13px;
+}
+
+.view-details:hover {
+	color: rgb(0, 135, 228);
+}
+
+.white {
+	color: white;
 }

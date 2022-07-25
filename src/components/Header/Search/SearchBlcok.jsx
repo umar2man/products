@@ -1,33 +1,30 @@
 import React from "react";
-import SearchButton from "./SearchButton";
-import Input from "./Input";
-import { ProductsContext } from "../../App";
 
 class SearchBlcok extends React.Component {
-  constructor(props) {
-    super(props);
+	constructor(props) {
+		super(props);
 
-    this.state = { inputText: "" };
-  }
+		this.state = { inputText: "" };
+	}
 
-  handleInputText = (text) => {
-    this.setState({
-      inputText: text,
-    });
-  };
+	handleInputText = (e) => {
+		this.setState({
+			inputText: e.target.value,
+		});
+	};
 
-  search = () => {
-    this.props.changeText(this.state.inputText);
-  };
-
-  render() {
-    return (
-      <div className="searchBlock">
-        <Input handleInputText={this.handleInputText} />
-        <SearchButton search={this.search} />
-      </div>
-    );
-  }
+	render() {
+		return (
+			<div className="search-block">
+				<div className="input-block">
+					<input type="text" placeholder="Название товара" onChange={this.handleInputText} />
+				</div>
+				<button className="search-button" onClick={() => this.props.changeText(this.state.inputText)}>
+					Поиск
+				</button>
+			</div>
+		);
+	}
 }
 
 export default SearchBlcok;

@@ -5,7 +5,7 @@ const products = [
         img: "https://shop.mts.ru/upload/images/besprovodnye-naushniki-s-mikrofonom-marshall-major-iv-1.jpg",
         price: 4400,
         left: 23,
-        amount: 1,
+        amount: 0,
     },
     {
         id: 1,
@@ -13,7 +13,7 @@ const products = [
         img: "https://shop.mts.ru/upload/images/besprovodnye-naushniki-s-mikrofonom-marshall-major-iv-1.jpg",
         price: 2500,
         left: 52,
-        amount: 1,
+        amount: 0,
     },
     {
         id: 2,
@@ -21,7 +21,7 @@ const products = [
         img: "https://shop.mts.ru/upload/images/besprovodnye-naushniki-s-mikrofonom-marshall-major-iv-1.jpg",
         price: 2100,
         left: 11,
-        amount: 1,
+        amount: 0,
     },
     {
         id: 3,
@@ -29,7 +29,7 @@ const products = [
         img: "https://shop.mts.ru/upload/images/besprovodnye-naushniki-s-mikrofonom-marshall-major-iv-1.jpg",
         price: 1200,
         left: 2,
-        amount: 1,
+        amount: 0,
     },
 ];
 

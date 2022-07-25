@@ -5,41 +5,59 @@ class Card extends React.Component {
 		super(props);
 
 		this.state = {
-			doCartIncludesProduct: this.props.productsInCart.find((item) => {
-				return item.id === this.props.id;
-			}),
+			inCart: false,
 		};
 	}
 
 	increment = (e) => {
 		e.stopPropagation();
-		// this.props.increment(this.props.id);
-		console.log(this.props.productsInCart);
+
+		this.props.increment(this.props.item.id);
+	};
+
+	decrement = (e) => {
+		e.stopPropagation();
+
+		if (this.props.item.amount === 1) {
+			this.selectProduct();
+		} else {
+			this.props.decrement(this.props.item.id);
+		}
+	};
+
+	selectProduct = () => {
+		this.setState(function (prevState, props) {
+			return { inCart: !prevState.inCart };
+		});
+
+		this.props.toogleProduct(this.props.item.id);
 	};
 
 	render() {
+		const { img, title, price, left, amount } = this.props.item;
+
+		const { inCart } = this.state;
+
 		return (
-			<div
-				className={this.state.doCartIncludesProduct ? "cardBlock selectedCard" : "cardBlock"}
-				onClick={() => this.props.toogleProduct(this.props.id)}
-			>
-				<div className="cardImg">
-					<img src={this.props.img} alt="image" />
+			<div className={inCart ? "card-block selected-card" : "card-block"} onClick={this.selectProduct}>
+				<div className="card-img">
+					<img src={img} alt="cart-image" />
 				</div>
-				<div className="cardTitle">{this.props.title}</div>
-				<div className="cardInfo">
-					<div className="cardPrice">Цена: {this.props.price}</div>
-					<div className="cardLeft">Осталось: {this.props.left}</div>
+				<div className="card-title">{title}</div>
+				<div className="card-info">
+					<div className="card-price">Цена: {price}</div>
+					<div className="card-left">Осталось: {left}</div>
 				</div>
-				<div className="amountBlock">
-					<button className="decBtn" onClick={this.decrement}>
+				<div className="amount-block">
+					<button className="dec-btn" disabled={!inCart && "disabled"} onClick={this.decrement}>
 						-
 					</button>
-					<div className="amount">{this.props.amount}</div>
-					<button className="incBtn" onClick={this.increment}>
+					<div className="amount">{amount}</div>
+					<button className="inc-btn" disabled={!inCart || left === 0 ? "disabled" : ""} onClick={this.increment}>
 						+
 					</button>
 				</div>
+				<div className={inCart ? "view-details white" : "view-details"}>Детальный просмотр</div>
 			</div>
 		);
 	}

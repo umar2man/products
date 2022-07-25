@@ -4,24 +4,16 @@ import Card from "./Card";
 
 class CardList extends React.Component {
 	render() {
+		const { products, keyWord } = this.props;
+
 		return (
-			<div className="cardList">
-				{this.props.products.map((item) => {
-					if (item.title.toLowerCase().includes(this.props.keyWord.toLowerCase())) {
+			<div className="card-list">
+				{products.map((item) => {
+					if (item.title.toLowerCase().includes(keyWord.toLowerCase())) {
 						return (
 							<ProductsContext.Consumer key={item.id}>
-								{(value) => (
-									<Card
-										id={item.id}
-										title={item.title}
-										img={item.img}
-										price={item.price}
-										left={item.left}
-										amount={item.amount}
-										toogleProduct={value.toogleProductToCart}
-										increment={value.increment}
-										productsInCart={value.productsInCart}
-									/>
+								{({ toogleProduct, increment, decrement }) => (
+									<Card item={item} toogleProduct={toogleProduct} increment={increment} decrement={decrement} />
 								)}
 							</ProductsContext.Consumer>
 						);
