@@ -1,7 +1,20 @@
 import React from "react";
+import { IProduct, numberVoidFunc } from "../types/types";
 
-class Card extends React.Component {
-	constructor(props) {
+interface CadProps {
+	item: IProduct;
+	itemAmount: number | undefined;
+	toogleProduct: numberVoidFunc;
+	incrementProductAmount: numberVoidFunc;
+	decrementProductAmount: numberVoidFunc;
+}
+
+interface CardState {
+	inCart: boolean;
+}
+
+class Card extends React.Component<CadProps, CardState> {
+	constructor(props: CadProps) {
 		super(props);
 
 		this.state = {
@@ -9,19 +22,19 @@ class Card extends React.Component {
 		};
 	}
 
-	increment = (e) => {
+	incrementProductAmount = (e: React.MouseEvent) => {
 		e.stopPropagation();
 
-		this.props.increment(this.props.item.id);
+		this.props.incrementProductAmount(this.props.item.id);
 	};
 
-	decrement = (e) => {
+	decrementProductAmount = (e: React.MouseEvent) => {
 		e.stopPropagation();
 
-		if (this.props.item.amount === 1) {
+		if (this.props.itemAmount === 1) {
 			this.selectProduct();
 		} else {
-			this.props.decrement(this.props.item.id);
+			this.props.decrementProductAmount(this.props.item.id);
 		}
 	};
 
@@ -34,7 +47,8 @@ class Card extends React.Component {
 	};
 
 	render() {
-		const { img, title, price, left, amount } = this.props.item;
+		const { img, title, price, left } = this.props.item;
+		const { itemAmount } = this.props;
 
 		const { inCart } = this.state;
 
@@ -49,11 +63,11 @@ class Card extends React.Component {
 					<div className="card-left">Осталось: {left}</div>
 				</div>
 				<div className="amount-block">
-					<button className="dec-btn" disabled={!inCart && "disabled"} onClick={this.decrement}>
+					<button className="dec-btn" disabled={!inCart} onClick={this.decrementProductAmount}>
 						-
 					</button>
-					<div className="amount">{amount}</div>
-					<button className="inc-btn" disabled={!inCart || left === 0 ? "disabled" : ""} onClick={this.increment}>
+					<div className="amount">{itemAmount || 0}</div>
+					<button className="inc-btn" disabled={!inCart || left === 0} onClick={this.incrementProductAmount}>
 						+
 					</button>
 				</div>

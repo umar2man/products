@@ -1,9 +1,9 @@
 import React from "react";
 import { ProductsContext } from "../App";
 import logo from "../../assets/logo.png";
-import SearchBlcok from "./Search/SearchBlcok";
+import SearchBlcok from "./SearchBlcok";
 
-class Header extends React.Component {
+class Header extends React.Component<{}, {}> {
 	render() {
 		return (
 			<header>
@@ -11,10 +11,10 @@ class Header extends React.Component {
 					<img src={logo} alt="logo" />
 				</div>
 				<ProductsContext.Consumer>
-					{({ changeText }) => <SearchBlcok changeText={changeText} />}
+					{(value) => <SearchBlcok changeText={value?.appAction.changeText!} />}
 				</ProductsContext.Consumer>
 				<ProductsContext.Consumer>
-					{({ totalPrice }) => <div className="total">Общая стоимость выбранных товаров: {totalPrice}р.</div>}
+					{(value) => <div className="total">Общая стоимость выбранных товаров: {value?.state.cart.totalPrice}р.</div>}
 				</ProductsContext.Consumer>
 			</header>
 		);
