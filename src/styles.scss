@@ -8,18 +8,19 @@ $blue-color: rgb(0, 135, 228);
 .app {
 	max-width: 1200px;
 	margin: auto;
-	font-size: 20px;
+	// font-size: 20px;
 }
 
-header {
+.header {
 	align-items: center;
 	display: flex;
 	justify-content: space-around;
 
 	.logo {
-		width: 6%;
+		max-width: 6%;
+
 		img {
-			width: 100%;
+			max-width: 100%;
 		}
 	}
 
@@ -27,6 +28,7 @@ header {
 		width: 44%;
 		display: flex;
 		justify-content: space-between;
+		// background-color: red;
 
 		.input-block {
 			width: 58%;
@@ -52,6 +54,7 @@ header {
 	}
 
 	.total {
+		font-size: 20px;
 		width: 35%;
 	}
 }
@@ -63,8 +66,8 @@ header {
 	margin-top: 40px;
 
 	.card-block {
-		width: 22%;
-		margin: 1% 0;
+		max-width: 22%;
+		margin: 10px;
 		padding: 2%;
 		border: 1px solid $blue-color;
 		border-radius: 10px;
@@ -74,27 +77,33 @@ header {
 		.card-img {
 			width: 100%;
 			text-align: center;
+
 			img {
 				width: 100%;
 			}
 		}
+
 		.card-title {
 			font-weight: 700;
 			text-align: center;
 		}
+
 		.card-info {
 			margin-bottom: 10px;
 			display: flex;
 			justify-content: space-between;
 		}
+
 		.amount-block {
 			display: flex;
 			justify-content: space-between;
+
 			.amount {
 				line-height: 30px;
 				font-size: 24px;
 				font-weight: 700;
 			}
+
 			button {
 				width: 30px;
 				height: 30px;
@@ -104,6 +113,7 @@ header {
 				cursor: pointer;
 				background-color: rgb(255, 255, 255);
 				color: $blue-color;
+
 				&:disabled {
 					background-color: rgb(197, 197, 197);
 					border: none;
@@ -112,16 +122,19 @@ header {
 				}
 			}
 		}
+
 		.view-details {
 			color: rgb(181, 181, 181);
 			position: absolute;
 			top: 2px;
 			right: 5px;
 			font-size: 13px;
+
 			&:hover {
 				color: $blue-color;
 			}
 		}
+
 		.white {
 			color: white;
 		}
@@ -129,5 +142,57 @@ header {
 
 	.selected-card {
 		background-color: rgb(202, 230, 247);
+	}
+}
+
+.modal-background {
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	overflow: hidden;
+	background: rgba(0, 0, 0, 0.7);
+	display: flex;
+	justify-content: center;
+	align-items: center;
+
+	.modal-card {
+		max-width: 400px;
+		max-height: 400px;
+		background-color: white;
+		padding: 25px;
+		border: 2px solid $blue-color;
+		border-radius: 10px;
+
+		.modal-card-img {
+			width: 100%;
+			text-align: center;
+			img {
+				width: 100%;
+			}
+		}
+
+		.modal-card-title {
+			font-weight: 700;
+			font-size: 50px;
+			text-align: center;
+			margin: 10px 0;
+			color: $blue-color;
+		}
+
+		.modal-card-info {
+			margin-bottom: 10px;
+			display: flex;
+			justify-content: space-between;
+		}
+
+		.modal-card-price {
+			font-size: 25px;
+		}
+
+		.modal-card-left {
+			font-size: 25px;
+		}
 	}
 }

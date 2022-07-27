@@ -1,13 +1,6 @@
 import React from "react";
-import { textVoidFunc } from "../../types/types";
-
-interface SearchBlcokProps {
-	changeText: textVoidFunc;
-}
-
-interface SearchBlcokState {
-	inputText: string;
-}
+import { textVoidFunc } from "../../../types/types";
+import { SearchBlcokProps, SearchBlcokState } from "./SearchBlockTypes";
 
 class SearchBlcok extends React.Component<SearchBlcokProps, SearchBlcokState> {
 	constructor(props: SearchBlcokProps) {
@@ -16,12 +9,6 @@ class SearchBlcok extends React.Component<SearchBlcokProps, SearchBlcokState> {
 		this.state = { inputText: "" };
 	}
 
-	handleInputText: textVoidFunc = (text) => {
-		this.setState({
-			inputText: text,
-		});
-	};
-
 	render() {
 		const { changeText } = this.props;
 		const { inputText } = this.state;
@@ -29,7 +16,15 @@ class SearchBlcok extends React.Component<SearchBlcokProps, SearchBlcokState> {
 		return (
 			<div className="search-block">
 				<div className="input-block">
-					<input type="text" placeholder="Название товара" onChange={(e) => this.handleInputText(e.target.value)} />
+					<input
+						type="text"
+						placeholder="Название товара"
+						onChange={(e) =>
+							this.setState({
+								inputText: e.target.value,
+							})
+						}
+					/>
 				</div>
 				<button className="search-button" onClick={() => changeText(inputText)}>
 					Поиск
